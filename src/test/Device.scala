@@ -10,7 +10,7 @@ println (" Result is: " + peek(dut.io.out). toString )
 }
 
 object TesterSimple extends App {
-chisel3 . iotesters . Driver (() => new DeviceUnderTest ()) { c =>
-new TesterSimple (c)
+chisel3 . iotesters . Driver (() => new DeviceUnderTest ()) {
+  c => new TesterSimple (c)
 }
 }
