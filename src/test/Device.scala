@@ -1,5 +1,4 @@
-class TesterSimple (dut: DeviceUnderTest ) extends
-PeekPokeTester (dut) {
+class TesterSimple (dut: DeviceUnderTest ) extendsPeekPokeTester (dut) {
 poke(dut.io.a, 0.U)
 poke(dut.io.b, 1.U)
 step (1)
