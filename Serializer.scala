@@ -4,7 +4,7 @@ class Serializer extends Module{
 		val div  = Input(UInt(5.W))
 		val parity = Input(Bool())
 		val enable =Input(Bool())
-		val iamready = Output(Bool())
+		val ready = Output(Bool())
 		val output = Output(Bool())
 	})
 	val counter = RegInit(0.U(4.W))
@@ -13,7 +13,7 @@ class Serializer extends Module{
 	val paritybit = Mux(io.parity, computedparity, !computedparity)   
 	
 	when(io.enable){
-		io.iamready := !shifter.orR
+		io.ready := !shifter.orR
 		when(io.input.valid){
 			shifter := Cat(io.input.bits, paritybit)
 
@@ -25,6 +25,6 @@ class Serializer extends Module{
 			counter := 0.U
 		}
 	}.otherwise{
-		io.iamready := false.B
+		io.ready := false.B
 		io.output := false.B
 	}
