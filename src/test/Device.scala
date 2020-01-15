@@ -9,3 +9,9 @@ poke(dut.io.b, 2.U)
 step (1)
 println (" Result is: " + peek(dut.io.out). toString )
 }
+
+object TesterSimple extends App {
+chisel3 . iotesters . Driver (() => new DeviceUnderTest ()) { c =>
+new TesterSimple (c)
+}
+}
